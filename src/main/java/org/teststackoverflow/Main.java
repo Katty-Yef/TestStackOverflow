@@ -34,6 +34,7 @@ public class Main {
         header.clickLogo();
         header.searchSmth("Why do we use C");
         header.clickLogInButton();
+        header.clickSignUpButton();
 
         LogIn login = PageFactory.initElements(driver, LogIn.class);
 
