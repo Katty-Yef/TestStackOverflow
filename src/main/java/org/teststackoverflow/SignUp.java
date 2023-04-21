@@ -33,7 +33,7 @@ public class SignUp {
         return new LogIn(driver);
     }
 
-    public SignUp enterDisplayName(String name){
+    public SignUp enterUserName(String name){
         displayNameField.sendKeys(name);
         return this;
     }
@@ -59,7 +59,7 @@ public class SignUp {
     }
 
     public SignUp registerWithInvalidCreds(String name, String email, String password){
-        enterDisplayName(name);
+        enterUserName(name);
         enterEmail(email);
         enterPassword(password);
         clickCaptcha();

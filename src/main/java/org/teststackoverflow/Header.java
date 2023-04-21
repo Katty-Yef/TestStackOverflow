@@ -39,8 +39,8 @@ public class Header {
         return this;
     }
 
-    public Header searchSmth(String string){
-        searchField.sendKeys(string);
+    public Header fillInSearchFieldAndPressEnterKey(String searchQuery){
+        searchField.sendKeys(searchQuery);
         searchField.sendKeys(Keys.ENTER);
         return new Header(driver);
     }

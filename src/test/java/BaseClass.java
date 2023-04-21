@@ -8,7 +8,7 @@ import org.teststackoverflow.Header;
 
 import java.time.Duration;
 
-public class Base {
+public class BaseClass {
     protected WebDriver driver;
     protected Header header;
 
