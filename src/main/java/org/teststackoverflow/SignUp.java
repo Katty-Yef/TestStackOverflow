@@ -53,17 +53,17 @@ public class SignUp {
         return this;
     }
 
-    public SignUp selectOptIn(){
+    public SignUp selectOptInCheckbox(){
         optinCheckbox.click();
         return this;
     }
 
-    public SignUp registerWithInvalidCreds(String name, String email, String password){
+    public SignUp submitRegisterFormWithInvalidCreds(String name, String email, String password){
         enterUserName(name);
         enterEmail(email);
         enterPassword(password);
         clickCaptcha();
-        selectOptIn();
+        selectOptInCheckbox();
         signUpButton.submit();
         return new SignUp(driver);
     }

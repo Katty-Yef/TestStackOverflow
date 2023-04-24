@@ -31,24 +31,24 @@ public class LogIn {
         return this;
     }
 
-    public LogIn sumbitInvalidCreds(String email, String password){
+    public LogIn sumbitLoginFormWithInvalidCreds(String email, String password){
         enterEmail(email);
         enterPassword(password);
         logInButton.submit();
         return new LogIn(driver);
     }
 
-    public SignUp clickSignUp(){
+    public SignUp clickSignUpButton(){
         signUpButton.click();
         return new SignUp(driver);
     }
 
-    public LogIn clearEmail(){
+    public LogIn clearEmailField(){
         emailField.clear();
         return this;
     }
 
-    public LogIn clearPassword(){
+    public LogIn clearPasswordField(){
         passwordField.clear();
         return this;
     }
