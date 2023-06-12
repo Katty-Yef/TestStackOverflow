@@ -3,12 +3,9 @@ package org.teststackoverflow;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LogIn {
-
-    public LogIn(WebDriver driver) {
-        this.driver = driver;
-    }
 
     private WebDriver driver;
 
@@ -21,34 +18,39 @@ public class LogIn {
     @FindBy(xpath = "//div[@class='mx-auto ta-center fs-body1 p16 pb0 mb24 w100 wmx3']/a")
     private WebElement signUpButton;
 
-    public LogIn enterEmail(String email){
+    public LogIn(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    public LogIn enterEmail(String email) {
         emailField.sendKeys(email);
         return this;
     }
 
-    public LogIn enterPassword(String password){
+    public LogIn enterPassword(String password) {
         passwordField.sendKeys(password);
         return this;
     }
 
-    public LogIn sumbitLoginFormWithInvalidCreds(String email, String password){
+    public LogIn sumbitLoginFormWithInvalidCreds(String email, String password) {
         enterEmail(email);
         enterPassword(password);
         logInButton.submit();
         return new LogIn(driver);
     }
 
-    public SignUp clickSignUpButton(){
+    public SignUp clickSignUpButton() {
         signUpButton.click();
         return new SignUp(driver);
     }
 
-    public LogIn clearEmailField(){
+    public LogIn clearEmailField() {
         emailField.clear();
         return this;
     }
 
-    public LogIn clearPasswordField(){
+    public LogIn clearPasswordField() {
         passwordField.clear();
         return this;
     }

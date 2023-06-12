@@ -1,15 +1,12 @@
 package org.teststackoverflow;
 
-import org.checkerframework.common.value.qual.IntRangeFromGTENegativeOne;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class SignUp {
-
-    public SignUp(WebDriver driver) {
-        this.driver = driver;
-    }
 
     private WebDriver driver;
 
@@ -27,38 +24,49 @@ public class SignUp {
     private WebElement signUpButton;
     @FindBy(xpath = "//div[@class='mx-auto ta-center fs-body1 p16 pb0 mb24 w100 wmx3 js-redirects']/a")
     private WebElement logInButton;
+    @FindBy(xpath = "//body//h1")
+    private WebElement title;
 
-    public LogIn clickLogInButton(){
+    public SignUp(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    public String getTitle() {
+        return title.getText();
+    }
+
+    public LogIn clickLogInButton() {
         logInButton.click();
         return new LogIn(driver);
     }
 
-    public SignUp enterUserName(String name){
+    public SignUp enterUserName(String name) {
         displayNameField.sendKeys(name);
         return this;
     }
 
-    public SignUp enterEmail(String email){
+    public SignUp enterEmail(String email) {
         emailField.sendKeys(email);
         return this;
     }
 
-    public SignUp enterPassword(String password){
+    public SignUp enterPassword(String password) {
         passwordField.sendKeys(password);
         return this;
     }
 
-    public SignUp clickCaptcha(){
+    public SignUp clickCaptcha() {
         captcha.click();
         return this;
     }
 
-    public SignUp selectOptInCheckbox(){
+    public SignUp selectOptInCheckbox() {
         optinCheckbox.click();
         return this;
     }
 
-    public SignUp submitRegisterFormWithInvalidCreds(String name, String email, String password){
+    public SignUp submitRegisterFormWithInvalidCreds(String name, String email, String password) {
         enterUserName(name);
         enterEmail(email);
         enterPassword(password);

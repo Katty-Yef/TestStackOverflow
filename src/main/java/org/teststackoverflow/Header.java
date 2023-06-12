@@ -4,12 +4,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class Header {
-
-    public Header(WebDriver driver) {
-        this.driver = driver;
-    }
 
     private WebDriver driver;
 
@@ -24,28 +21,33 @@ public class Header {
     @FindBy(xpath = "//nav[@class='h100 ml-auto overflow-x-auto pr12']//a[@class='s-topbar--item s-topbar--item__unset ml4 s-btn s-btn__primary ws-nowrap']")
     private WebElement signUpButton;
 
-    public SignUp clickSignUpButton(){
+    public Header(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    public SignUp clickSignUpButton() {
         signUpButton.click();
         return new SignUp(driver);
     }
 
-    public LogIn clickLogInButton(){
+    public LogIn clickLogInButton() {
         logInButton.click();
         return new LogIn(driver);
     }
 
-    public Header expandMenu(){
+    public Header expandMenu() {
         burgerButton.click();
         return this;
     }
 
-    public Header fillInSearchFieldAndPressEnterKey(String searchQuery){
+    public Header fillInSearchFieldAndPressEnterKey(String searchQuery) {
         searchField.sendKeys(searchQuery);
         searchField.sendKeys(Keys.ENTER);
         return new Header(driver);
     }
 
-    public Header clickLogo(){
+    public Header clickLogo() {
         logoButton.click();
         return new Header(driver);
     }
